@@ -203,7 +203,7 @@
 										{
 											"name": "cdc_timestamp",
 											"value": {
-												"value": "@activity('max_cdc_time_get').output.resultSets[0].rows[0].cdc_timestamp\n",
+												"value": "@activity('max_cdc_time_get').output.resultSets[0].rows[0].cdc_timestamp",
 												"type": "Expression"
 											}
 										}
