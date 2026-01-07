@@ -34,25 +34,6 @@
 				}
 			},
 			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
-				"policy": {
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "cdc_lasttimestamp",
-					"value": {
-						"value": "@activity('Lookup1').output.value[0].cdc_timestamp",
-						"type": "Expression"
-					}
-				}
-			},
-			{
 				"name": "Script1",
 				"type": "Script",
 				"dependsOn": [
@@ -80,12 +61,64 @@
 						{
 							"type": "Query",
 							"text": {
-								"value": "select count(*) as cnt from @{pipeline().parameters.databasename}.{pipeline().parameters.tablename}\nwhere last_updated=activity('Lookup1').output.value[0].cdc_timestamp",
+								"value": "select count(*) as cnt from @{pipeline().parameters.databasename}.@{pipeline().parameters.tablename}\nwhere last_updated>@{activity('Lookup1').output.value[0].cdc_timestamp}",
 								"type": "Expression"
 							}
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Script1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@greater(activity('Script1').output.resultSets[0].rowCount[0].rowCount,0)\n\n\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "select * from @{pipeline().parameters.databasename}.@{pipeline().parameters.tablename}\nwhere last_updated>'@{activity('Lookup1').output.value[0].cdc_timestamp}'\n\n",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "azuresql_db_ds",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
 				}
 			}
 		],
