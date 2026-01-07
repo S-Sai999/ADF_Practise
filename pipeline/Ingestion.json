@@ -61,7 +61,7 @@
 						{
 							"type": "Query",
 							"text": {
-								"value": "select count(*) as cnt from @{pipeline().parameters.databasename}.@{pipeline().parameters.tablename}\nwhere last_updated>@{activity('Lookup1').output.value[0].cdc_timestamp}",
+								"value": "select count(*) from @{pipeline().parameters.databasename}.@{pipeline().parameters.tablename}\nwhere last_updated>'@{activity('Lookup1').output.value[0].cdc_timestamp}'",
 								"type": "Expression"
 							}
 						}
