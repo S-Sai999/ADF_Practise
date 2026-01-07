@@ -15,13 +15,6 @@
 				"fileSystem": "source"
 			}
 		},
-		"schema": {
-			"type": "object",
-			"properties": {
-				"cdc_timestamp": {
-					"type": "string"
-				}
-			}
-		}
+		"schema": {}
 	}
 }
