@@ -1,0 +1,26 @@
+{
+	"name": "SAI_TEST",
+	"properties": {
+		"activities": [
+			{
+				"name": "Filter1",
+				"type": "Filter",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().Pipeline",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@item()",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-12-20T07:04:45Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

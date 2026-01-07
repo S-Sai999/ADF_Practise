@@ -1,0 +1,9 @@
+{
+	"name": "SAIADF99",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "42523c4f-f81c-427a-8a33-b689563838e1",
+		"tenantId": "456fc1dc-f670-4f0d-8756-6794fcc1cd1e"
+	}
+}
