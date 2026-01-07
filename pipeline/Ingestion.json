@@ -83,7 +83,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@greater(activity('Script1').output.resultSets[0].rowCount[0].cnt,0)\n\n\n",
+						"value": "@greater(activity('Script1').output.resultSets[0].rowCount[0].rows[0].cnt,0)\n\n\n",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
