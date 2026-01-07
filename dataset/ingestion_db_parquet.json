@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "orders.parqet",
 				"folderPath": "ingestion_orders",
 				"fileSystem": "destination"
 			},
