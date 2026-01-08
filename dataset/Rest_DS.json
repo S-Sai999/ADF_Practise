@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "Pokemon.json",
 				"folderPath": "rest_ingestion",
 				"fileSystem": "destination"
 			}
