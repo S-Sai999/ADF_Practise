@@ -1,0 +1,19 @@
+{
+	"name": "Rest_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "rest_ingestion",
+				"fileSystem": "destination"
+			}
+		},
+		"schema": {}
+	}
+}
