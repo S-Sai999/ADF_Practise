@@ -23,7 +23,10 @@
 						}
 					},
 					"url": "https://adb-7405613863612366.6.azuredatabricks.net/api/2.1/jobs/run-now",
-					"body": "{\"job_id\":66729231341043}\n{\n  \"Authorization\": \"@{concat('Bearer ',linkedService().keyvault_workflow.getSecret('sai999pattoken'))}\"\n}",
+					"body": {
+						"value": "{\"job_id\":66729231341043}",
+						"type": "Expression"
+					},
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://databricks.azure.net"
@@ -35,7 +38,14 @@
 				"type": "SetVariable",
 				"state": "Inactive",
 				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Web1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
@@ -74,7 +84,14 @@
 				"type": "WebHook",
 				"state": "Inactive",
 				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
