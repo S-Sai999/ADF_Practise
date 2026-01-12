@@ -1,0 +1,10 @@
+{
+	"name": "keyvault_workflow",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://workflowpattoken.vault.azure.net/"
+		}
+	}
+}
