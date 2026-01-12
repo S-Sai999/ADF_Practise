@@ -94,11 +94,6 @@
 				}
 			}
 		],
-		"variables": {
-			"pattoken": {
-				"type": "String"
-			}
-		},
 		"annotations": []
 	}
 }
