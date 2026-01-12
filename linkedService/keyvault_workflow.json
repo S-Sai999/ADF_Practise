@@ -1,6 +1,12 @@
 {
 	"name": "keyvault_workflow",
 	"properties": {
+		"parameters": {
+			"pattoken": {
+				"type": "string",
+				"defaultValue": "@{keyvault_workflow().ai999pattoken}"
+			}
+		},
 		"annotations": [],
 		"type": "AzureKeyVault",
 		"typeProperties": {
