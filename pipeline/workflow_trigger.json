@@ -5,16 +5,7 @@
 			{
 				"name": "workflow_trigger",
 				"type": "WebActivity",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [
-					{
-						"activity": "Set variable1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -26,14 +17,15 @@
 				"typeProperties": {
 					"method": "POST",
 					"headers": {
-						"Authorization": ""
+						"pattoken": {
+							"value": "{\r\n  \"Authorization\": {\r\n    \"type\": \"AzureKeyVaultSecret\",\r\n    \"store\": {\r\n      \"referenceName\": \"keyvault_workflow\",\r\n      \"type\": \"LinkedServiceReference\"\r\n    },\r\n    \"secretName\": \"sai999pattoken\"\r\n  }\r\n}",
+							"type": "Expression"
+						}
 					},
 					"url": "https://adb-7405613863612366.6.azuredatabricks.net/api/2.1/jobs/run-now",
-					"body": {
-						"job_id": 66729231341043
-					},
+					"body": "{\"job_id\":66729231341043}\n{\n  \"Authorization\": \"@{concat('Bearer ',linkedService().keyvault_workflow.getSecret('sai999pattoken'))}\"\n}",
 					"authentication": {
-						"type": "Basic"
+						"type": "MSI"
 					}
 				}
 			},
@@ -56,6 +48,8 @@
 			{
 				"name": "Web1",
 				"type": "WebActivity",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -71,6 +65,30 @@
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "workflow_trigger_new",
+				"type": "WebHook",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://adb-7405613863612366.6.azuredatabricks.net/api/2.1/jobs/run-now",
+					"method": "POST",
+					"body": {
+						"value": "{\"job_id\":66729231341043}",
+						"type": "Expression"
+					},
+					"timeout": "00:10:00",
+					"authentication": {
+						"type": "MSI"
 					}
 				}
 			}
