@@ -25,7 +25,8 @@
 					"url": "https://adb-7405613863612366.6.azuredatabricks.net/api/2.1/jobs/run-now",
 					"body": "{\"job_id\":66729231341043}\n{\n  \"Authorization\": \"@{concat('Bearer ',linkedService().keyvault_workflow.getSecret('sai999pattoken'))}\"\n}",
 					"authentication": {
-						"type": "MSI"
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
 					}
 				}
 			},
