@@ -4,7 +4,7 @@
 		"parameters": {
 			"pattoken": {
 				"type": "string",
-				"defaultValue": "@{keyvault_workflow().ai999pattoken}"
+				"defaultValue": "sai999pattoken"
 			}
 		},
 		"annotations": [],
