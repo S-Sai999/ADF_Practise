@@ -1,6 +1,28 @@
 {
 	"name": "workflow_trigger",
 	"properties": {
+		"activities": [
+			{
+				"name": "workflow_trigger",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://adb-7405613863612366.6.azuredatabricks.net/api/2.1/jobs/run-now",
+					"body": {
+						"job_id": 66729231341043
+					}
+				}
+			}
+		],
 		"annotations": []
 	}
 }
