@@ -29,7 +29,10 @@
 					},
 					"authentication": {
 						"type": "MSI",
-						"resource": "https://databricks.azure.net"
+						"resource": {
+							"value": "https://databricks.azure.net",
+							"type": "Expression"
+						}
 					}
 				}
 			},
