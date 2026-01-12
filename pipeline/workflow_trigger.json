@@ -5,7 +5,16 @@
 			{
 				"name": "workflow_trigger",
 				"type": "WebActivity",
-				"dependsOn": [],
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -16,13 +25,61 @@
 				"userProperties": [],
 				"typeProperties": {
 					"method": "POST",
+					"headers": {
+						"Authorization": ""
+					},
 					"url": "https://adb-7405613863612366.6.azuredatabricks.net/api/2.1/jobs/run-now",
 					"body": {
 						"job_id": 66729231341043
+					},
+					"authentication": {
+						"type": "Basic"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "pattoken",
+					"value": ""
+				}
+			},
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://workflowpattoken.vault.azure.net/secrets/sai999pattoken?api-version=8a2f687ebea841a3b96c2c6cb9c5720e",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
 					}
 				}
 			}
 		],
+		"variables": {
+			"pattoken": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
