@@ -30,7 +30,7 @@
 					"authentication": {
 						"type": "MSI",
 						"resource": {
-							"value": "https://adb-7405613863612366.6.azuredatabricks.net",
+							"value": "https://databricks.azure.net",
 							"type": "Expression"
 						}
 					}
