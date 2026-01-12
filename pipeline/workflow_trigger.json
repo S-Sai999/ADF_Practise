@@ -67,7 +67,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"method": "GET",
-					"url": "https://workflowpattoken.vault.azure.net/secrets/sai999pattoken?api-version=8a2f687ebea841a3b96c2c6cb9c5720e",
+					"url": "https://workflowpattoken.vault.azure.net/secrets/sai999pattoken?api-version=7.3",
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://vault.azure.net"
