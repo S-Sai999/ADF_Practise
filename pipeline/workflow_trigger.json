@@ -26,7 +26,7 @@
 					"body": "{\"job_id\":66729231341043}\n{\n  \"Authorization\": \"@{concat('Bearer ',linkedService().keyvault_workflow.getSecret('sai999pattoken'))}\"\n}",
 					"authentication": {
 						"type": "MSI",
-						"resource": "https://vault.azure.net"
+						"resource": "https://databricks.azure.net"
 					}
 				}
 			},
