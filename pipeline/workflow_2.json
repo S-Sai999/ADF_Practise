@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebookPath": {
-						"value": "https://adb-7405605683523568.8.azuredatabricks.net/api/2.1/jobs/run-now",
+						"value": "https://adb-7405605683523568.8.azuredatabricks.net/jobs/310837921220230?o=7405605683523568",
 						"type": "Expression"
 					}
 				},
