@@ -29,13 +29,6 @@
 					"body": {
 						"value": "{\"job_id\":310837921220230}",
 						"type": "Expression"
-					},
-					"authentication": {
-						"type": "MSI",
-						"resource": {
-							"value": "https://databricks.azure.net",
-							"type": "Expression"
-						}
 					}
 				}
 			},
