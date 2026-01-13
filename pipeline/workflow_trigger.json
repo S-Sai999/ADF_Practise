@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"method": "POST",
 					"headers": {
-						"pattoken": {
+						"Authorization": {
 							"value": "{\n  \"Authorization\": {\n    \"type\": \"AzureKeyVaultSecret\",\n    \"store\": {\n      \"referenceName\": \"keyvault_workflow\",\n      \"type\": \"LinkedServiceReference\"\n    },\n    \"secretName\": \"sai999pattoken\"\n  }\n}",
 							"type": "Expression"
 						}
@@ -29,6 +29,13 @@
 					"body": {
 						"value": "{\"job_id\":310837921220230}",
 						"type": "Expression"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": {
+							"value": "https://databricks.azure.net",
+							"type": "Expression"
+						}
 					}
 				}
 			},
