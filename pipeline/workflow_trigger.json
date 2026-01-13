@@ -22,7 +22,10 @@
 							"type": "Expression"
 						}
 					},
-					"url": "https://adb-7405605683523568.8.azuredatabricks.net/api/2.1/jobs/run-now",
+					"url": {
+						"value": "https://adb-7405605683523568.8.azuredatabricks.net/api/2.1/jobs/run-now",
+						"type": "Expression"
+					},
 					"body": {
 						"value": "{\"job_id\":310837921220230}",
 						"type": "Expression"
