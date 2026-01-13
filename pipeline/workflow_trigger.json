@@ -16,12 +16,6 @@
 				"userProperties": [],
 				"typeProperties": {
 					"method": "POST",
-					"headers": {
-						"Authorization": {
-							"value": "{\n  \"Authorization\": {\n    \"type\": \"AzureKeyVaultSecret\",\n    \"store\": {\n      \"referenceName\": \"keyvault_workflow\",\n      \"type\": \"LinkedServiceReference\"\n    },\n    \"secretName\": \"sai999pattoken\"\n  }\n}",
-							"type": "Expression"
-						}
-					},
 					"url": {
 						"value": "https://adb-7405605683523568.8.azuredatabricks.net/api/2.1/jobs/run-now",
 						"type": "Expression"
