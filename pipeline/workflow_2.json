@@ -5,6 +5,8 @@
 			{
 				"name": "Notebook1",
 				"type": "DatabricksNotebook",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -19,6 +21,26 @@
 						"value": "https://adb-7405605683523568.8.azuredatabricks.net/jobs/310837921220230?o=7405605683523568",
 						"type": "Expression"
 					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Databricks_LS",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Job1",
+				"type": "DatabricksJob",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"jobId": "310837921220230"
 				},
 				"linkedServiceName": {
 					"referenceName": "Databricks_LS",
